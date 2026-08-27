@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anims-OS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="os-title">Anims-OS</div>
+        <div class="datetime">
+            <span class="time" id="time">00:00</span>
+            <span class="date" id="date">Jan 1</span>
+        </div>
+    </div>
+    <div class="desktop-apps">
+        <div class="app-icon" onclick="openApp('notes')" title="Notes">
+            <div class="icon-bg">📝</div>
+            <span>Notes</span>
+        </div>
+        <div class="app-icon" onclick="openApp('tetris')" title="Tetris">
+            <div class="icon-bg">🎮</div>
+            <span>Tetris</span>
+        </div>
+        <div class="app-icon" onclick="openWindow('features')" title="Features">
+            <div class="icon-bg">⚙️</div>
+            <span>Features</span>
+        </div>  
+    </div>
+    <div id="welcome" class="window active">
+        <div class="window-header">
+            <span>Welcome</span>
+            <button class="close-btn" onclick="closeWindow('welcome')">X</button>
+        </div>
+        <div class="window-content">
+            <h2> Welcome to Anims-OS</h2>
+            <p>A beautiful dark-themed OS with glass morphism design.</p>
+            <p>Click desktop icons to open apps. Drag any window by its title bar.</p>
+            <p>Resize windows from the corner. Fully customizable!</p>
+        </div>
+        <div class="resize-handle"></div>
+    </div>
+    <div id="features" class="window">
+        <div class="window-header">
+            <span>Features</span>
+            <button class="close-btn" onclick="closeWindow('features')">X</button>
+        </div>
+        <div class="window-content">
+            <h2>What's Inside</h2>
+            <ul class="feature-list">
+                 <li>Glass Morphism UI</li>
+                <li>Dark Theme</li>
+                <li>Notes App</li>
+                <li>Tetris Game</li>
+                <li>5 Backgrounds</li>
+                <li>Draggable Windows</li>
+                <li>Resizable Windows</li>
+            </ul>
+        </div>
+        <div class="resize-handle"></div>
+    </div>
+    <div id="notes-app" class="window">
+        <div class="window-header">
+            <span>Notes</span>
+            <button class="close-btn" onclick="closeWindow('notes-app')">X</button>
+        </div>
+        <div class="window-content">
+            <h2>My Notes</h2>
+            <div id="notes-list"></div>
+            <input type="text" id="note-input" class="note-input" placeholder="Type note and press Enter..." onkeypress="addNote(event)">
+        </div>
+        <div class="resize-handle"></div>
+    </div>
+    <div id="tetris-app" class="window">
+        <div class="window-header">
+            <span>Tetris Game</span>
+            <button class="close-btn" onclick="closeWindow('tetris-app')">✕</button>
+        </div>
+        <div class="window-content" style="padding: 12px; display: flex; flex-direction: column; align-items: center;">
+            <div style="margin-bottom: 8px; text-align: center;">
+                <div style="font-size: 12px; opacity: 0.8;">Score: <strong id="tetris-score">0</strong></div>
+            </div>
+            <div id="tetris-board" style="margin-bottom: 10px; width: 200px;"></div>
+            <div style="text-align: center;">
+                <button class="tetris-btn" id="tetris-start-btn" onclick="startTetris()">Start Game</button>
+                <button class="tetris-btn" onclick="stopTetris()" style="margin-left: 5px;">Stop</button>
+            </div>
+        </div>
+        <div class="resize-handle"></div>
+    </div>
+    <div class="feature-button" onmouseenter="showMenu()" onmouseleave="hideMenu()">⚙️ Theme
+    </div>
+    <div class="feature-menu" id="feature-menu" onmouseenter="showMenu()" onmouseleave="hideMenu()">
+        <div class="menu-item" onclick="openFeature('backgrounds')">🎨 Backgrounds</div>
+        <div class="menu-item" onclick="openWindow('features')">📋 Features</div>
+    </div>
+    <div id="backgrounds-menu" class="window" style="left: 50px; width: 320px;">
+        <div class="window-header">
+            <span>Choose Background</span>
+            <button class="close-btn" onclick="closeFeature('backgrounds')">X</button>
+        </div>
+        <div class="window-content">
+            <div class="bg-container" id="bg-container"></div>
+        </div>
+        <div class="resize-handle"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
