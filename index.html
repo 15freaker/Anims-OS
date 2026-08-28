@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anims-OS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">Anims-OS</div>
+  <div class="clock">
+    <span id="time">00:00</span> | <span id="date">Jan 1</span>
+  </div>
+</div>
+
+<div class="appgrid">
+  <button class="appbtn" onclick="openWindow('notesapp')">📝 Notes</button>
+  <button class="appbtn" onclick="openWindow('browserapp')">🌐 Browser</button>
+  <button class="appbtn" onclick="openWindow('calcapp')">🧮 Calculator</button>
+  <button class="appbtn" onclick="openWindow('featuresapp')">⚙️ Features</button>
+</div>
+
+<div id="notesapp" class="window">
+  <div class="winheader">
+    <span>Notes</span>
+    <button onclick="closeWindow('notesapp')">X</button>
+  </div>
+  <div class="winbody">
+    <div id="noteslist"></div>
+    <input type="text" id="noteinput" placeholder="Type note & hit Enter..." onkeypress="addNote(event)">
+  </div>
+</div>
+
+<div id="browserapp" class="window">
+  <div class="winheader">
+    <span>Browser</span>
+    <button onclick="closeWindow('browserapp')">X</button>
+  </div>
+  <div class="winbody">
+    <div class="row">
+      <input type="text" id="wikiinput" placeholder="Search Wikipedia..." onkeypress="if(event.key==='Enter') searchWiki()">
+      <button onclick="searchWiki()">Search</button>
+    </div>
+    <div id="wikiresults"></div>
+  </div>
+</div>
+
+<div id="calcapp" class="window">
+  <div class="winheader">
+    <span>Calculator</span>
+    <button onclick="closeWindow('calcapp')">X</button>
+  </div>
+  <div class="winbody">
+    <input type="text" id="calcdisplay" readonly value="0">
+    <div class="calcgrid">
+      <button onclick="calcClear()">C</button>
+      <button onclick="calcInput('/')">/</button>
+      <button onclick="calcInput('*')">*</button>
+      <button onclick="calcInput('-')">-</button>
+      <button onclick="calcInput('7')">7</button>
+      <button onclick="calcInput('8')">8</button>
+      <button onclick="calcInput('9')">9</button>
+      <button onclick="calcInput('+')">+</button>
+      <button onclick="calcInput('4')">4</button>
+      <button onclick="calcInput('5')">5</button>
+      <button onclick="calcInput('6')">6</button>
+      <button onclick="calcEquals()">=</button>
+      <button onclick="calcInput('1')">1</button>
+      <button onclick="calcInput('2')">2</button>
+      <button onclick="calcInput('3')">3</button>
+      <button onclick="calcInput('0')">0</button>
+    </div>
+  </div>
+</div>
+
+<div id="featuresapp" class="window">
+  <div class="winheader">
+    <span>Features</span>
+    <button onclick="closeWindow('featuresapp')">X</button>
+  </div>
+  <div class="winbody">
+    <ul>
+      <li>Draggable Windows</li>
+      <li>Notes App</li>
+      <li>Wikipedia Search Browser</li>
+      <li>Basic Calculator</li>
+    </ul>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
